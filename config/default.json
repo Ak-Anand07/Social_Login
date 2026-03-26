@@ -1,0 +1,105 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "./public/",
+  "origins": [
+    "http://localhost:3000",
+    "http://localhost:3030",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:3030"
+  ],
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "sqlite": {
+    "client": "sqlite3",
+    "connection": {
+      "filename": "./feathers-auth-app.sqlite"
+    },
+    "useNullAsDefault": true
+  },
+  "authentication": {
+    "entity": "user",
+    "service": "users",
+    "secret": "your-secret",
+    "authStrategies": [
+      "jwt",
+      "local",
+      "google",
+      "github",
+      "linkedin",
+      "twitter2",
+      "facebook"
+    ],
+    "jwtOptions": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "oauth": {
+      "redirect": "http://localhost:3000",
+      "google": {
+        "key": "977502929212-a2b41orh3rbdkadp42c86gv7uaov9ii4.apps.googleusercontent.com",
+        "secret": "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",
+        "scope": [
+          "profile",
+          "email"
+        ]
+      },
+      "github": {
+        "key": "Ov23lievP226PCDPGfg9",
+        "secret": "e0eb914a5940ebcd66a79cd052e4677f81bb551a",
+        "scope": [
+          "user:email"
+        ],
+        "custom_params": {
+          "prompt": "select_account"
+        }
+      },
+      "linkedin": {
+        "key": "862fzsis2kzc1n",
+        "secret": "WPL_AP1.ovs5CYYpzDU3UAz8.0WWHVw==",
+        "scope": [
+          "openid",
+          "profile",
+          "email"
+        ],
+        "callbackURL": "http://localhost:3030/oauth/linkedin/callback",
+        "profile_url": "https://api.linkedin.com/v2/userinfo",
+        "response": [
+          "tokens",
+          "profile"
+        ]
+      },
+      "twitter2": {
+        "key": "bVQyMkR1aktTaksyOEFzU0VoU1Q6MTpjaQ",
+        "secret": "wA7CX7mxKJfS-07FJh-vwl1HmSyTozQz9mjc-DO9tmppikYceH",
+        "pkce": true,
+        "scope": [
+          "tweet.read",
+          "users.read"
+        ],
+        "profile_url": "https://api.twitter.com/2/users/me?user.fields=id,name,username,profile_image_url",
+        "redirect_uri": "http://127.0.0.1:3030/oauth/twitter2/callback"
+      },
+      "facebook": {
+        "key": "YOUR_FACEBOOK_APP_ID",
+        "secret": "YOUR_FACEBOOK_APP_SECRET",
+        "scope": [
+          "email",
+          "public_profile"
+        ],
+        "profile_url": "https://graph.facebook.com/me?fields=id,name,email,picture"
+      }
+    }
+  }
+}

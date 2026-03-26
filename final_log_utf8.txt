@@ -1,0 +1,8 @@
+﻿warn: Publishing all events to all authenticated users. See `channels.ts` and https://dove.feathersjs.com/api/channels.html for more information.
+error: Unhandled Rejection Error: Can not find service 'users'
+    at Function.defaultService (C:\Users\admin\OneDrive\Documents\Social Login\node_modules\@feathersjs\feathers\src\application.ts:58:11)
+    at Function.service (C:\Users\admin\OneDrive\Documents\Social Login\node_modules\@feathersjs\feathers\src\application.ts:68:27)
+    at AuthenticationService.setup (C:\Users\admin\OneDrive\Documents\Social Login\node_modules\@feathersjs\authentication\src\service.ts:184:20)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Function.app.hooks.setup (C:\Users\admin\OneDrive\Documents\Social Login\node_modules\@feathersjs\configuration\src\index.ts:31:13)
+    at async Function.listen (C:\Users\admin\OneDrive\Documents\Social Login\node_modules\@feathersjs\express\src\index.ts:113:7)

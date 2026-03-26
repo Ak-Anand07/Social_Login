@@ -1,0 +1,32 @@
+{
+  "port": {
+    "__name": "PORT",
+    "__format": "number"
+  },
+  "host": "HOSTNAME",
+  "authentication": {
+    "secret": "FEATHERS_SECRET",
+    "oauth": {
+      "google": {
+        "key": "GOOGLE_CLIENT_ID",
+        "secret": "GOOGLE_CLIENT_SECRET"
+      },
+      "github": {
+        "key": "GITHUB_CLIENT_ID",
+        "secret": "GITHUB_CLIENT_SECRET"
+      },
+      "linkedin": {
+        "key": "LINKEDIN_CLIENT_ID",
+        "secret": "LINKEDIN_CLIENT_SECRET"
+      },
+      "twitter": {
+        "key": "TWITTER_CLIENT_ID",
+        "secret": "TWITTER_CLIENT_SECRET"
+      },
+      "facebook": {
+        "key": "FACEBOOK_CLIENT_ID",
+        "secret": "FACEBOOK_CLIENT_SECRET"
+      }
+    }
+  }
+}

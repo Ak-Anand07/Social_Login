@@ -1,0 +1,91 @@
+﻿warn: Publishing all events to all authenticated users. See `channels.ts` and https://dove.feathersjs.com/api/channels.html for more information.
+node.exe : C:\Users\ad
+min\OneDrive\Documents
+\Social Login\node_mod
+ules\@feathersjs\authe
+ntication-local\src\st
+rategy.ts:15
+At line:1 char:1
++ & "C:\Program Files\
+nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (C:\Users\a   
+ dmin\...\strategy    
+.ts:15:String) []    
+, RemoteException
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+    
+;['usernameField', 'pa
+sswordField'].forEach(
+(prop) => {
+                      
+                  ^
+Error: 'local' 
+authentication 
+strategy requires a 
+'usernameField' 
+setting
+    at C:\Users\admin\
+OneDrive\Documents\Soc
+ial Login\node_modules
+\@feathersjs\authentic
+ation-local\src\strate
+gy.ts:17:15
+    at Array.forEach 
+(<anonymous>)
+    at LocalStrategy.v
+erifyConfiguration (C:
+\Users\admin\OneDrive\
+Documents\Social Login
+\node_modules\@feather
+sjs\authentication-loc
+al\src\strategy.ts:15:
+41)
+    at AuthenticationS
+ervice.register (C:\Us
+ers\admin\OneDrive\Doc
+uments\Social Login\no
+de_modules\@feathersjs
+\authentication\src\co
+re.ts:158:16)
+    at Function.authen
+tication (C:\Users\adm
+in\OneDrive\Documents\
+Social Login\src\authe
+ntication.ts:16:18)
+    at 
+Function.configure (C:
+\Users\admin\OneDrive\
+Documents\Social Login
+\node_modules\@feather
+sjs\feathers\src\appli
+cation.ts:52:14)
+    at 
+Object.<anonymous> (C:
+\Users\admin\OneDrive\
+Documents\Social 
+Login\src\app.ts:46:5)
+    at 
+Module._compile (node:
+internal/modules/cjs/l
+oader:1706:14)
+    at 
+Module.m._compile (C:\
+Users\admin\OneDrive\D
+ocuments\Social Login\
+node_modules\ts-node\s
+rc\index.ts:1618:23)
+    at node:internal/m
+odules/cjs/loader:1839
+:10
