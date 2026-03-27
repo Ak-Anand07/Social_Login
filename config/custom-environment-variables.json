@@ -19,7 +19,7 @@
         "key": "LINKEDIN_CLIENT_ID",
         "secret": "LINKEDIN_CLIENT_SECRET"
       },
-      "twitter": {
+      "twitter2": {
         "key": "TWITTER_CLIENT_ID",
         "secret": "TWITTER_CLIENT_SECRET"
       },

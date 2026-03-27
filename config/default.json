@@ -83,6 +83,7 @@
       "twitter2": {
         "key": "bVQyMkR1aktTaksyOEFzU0VoU1Q6MTpjaQ",
         "secret": "wA7CX7mxKJfS-07FJh-vwl1HmSyTozQz9mjc-DO9tmppikYceH",
+        "state": true,
         "pkce": true,
         "scope": [
           "tweet.read",
@@ -92,12 +93,13 @@
         "redirect_uri": "http://127.0.0.1:3030/oauth/twitter2/callback"
       },
       "facebook": {
-        "key": "YOUR_FACEBOOK_APP_ID",
-        "secret": "YOUR_FACEBOOK_APP_SECRET",
+        "key": "905062485927992",
+        "secret": "275a8ec5108c4e5da9d7c64c9459d63c",
         "scope": [
           "email",
           "public_profile"
         ],
+        "redirect_uri": "http://localhost:3030/oauth/facebook/callback",
         "profile_url": "https://graph.facebook.com/me?fields=id,name,email,picture"
       }
     }

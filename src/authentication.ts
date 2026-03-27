@@ -20,6 +20,7 @@ class SocialOAuthStrategy extends OAuthStrategy {
     let providerId =
       profile.sub ||          // OpenID Connect standard (LinkedIn OIDC, Google)
       profile.id ||           // Passport/X standard
+      profile.data?.id ||     // X/Twitter v2 profile payload
       profile.id_str ||       // Twitter v1 API (returns id as string)
       profile.userId ||       // Some LinkedIn strategies
       profile.localizedFirstName // fallback marker (should not be used as ID)
@@ -28,7 +29,8 @@ class SocialOAuthStrategy extends OAuthStrategy {
     if (!providerId && profile._json) {
       providerId =
         profile._json.sub ||
-        profile._json.id
+        profile._json.id ||
+        profile._json.data?.id
     }
 
     // Reset if we accidentally grabbed a non-ID field
@@ -42,21 +44,31 @@ class SocialOAuthStrategy extends OAuthStrategy {
 
   protected getProfileName(profile: OAuthProfile): string | null {
     console.log('--- OAUTH PROFILE (getProfileName) ---', JSON.stringify(profile, null, 2))
+    const profileData = profile.data || profile._json?.data
     const givenName = profile.name?.givenName || profile.given_name
     const familyName = profile.name?.familyName || profile.family_name
     const fullName = [givenName, familyName].filter(Boolean).join(' ').trim()
-    const finalName = profile.displayName || profile.name || fullName || profile.username || null
+    const finalName =
+      profile.displayName ||
+      (typeof profile.name === 'string' ? profile.name : null) ||
+      profileData?.name ||
+      fullName ||
+      profile.username ||
+      profileData?.username ||
+      null
     console.log(`--- Extracted Profile Name: ${finalName} ---`)
     return finalName
   }
 
   protected getProfileAvatar(profile: OAuthProfile): string | null {
     console.log('--- OAUTH PROFILE (getProfileAvatar) ---', JSON.stringify(profile, null, 2))
+    const profileData = profile.data || profile._json?.data
     const finalAvatar =
       profile.photos?.[0]?.value ||
       profile.picture ||
       profile.avatar_url ||
       profile.profile_image_url ||   // X/Twitter API v2
+      profileData?.profile_image_url ||
       null
     console.log(`--- Extracted Profile Avatar: ${finalAvatar} ---`)
     return finalAvatar
@@ -116,7 +128,7 @@ class SocialOAuthStrategy extends OAuthStrategy {
     const email =
       profile.email ||
       (profile.emails as any)?.[0]?.value ||
-      'no-email@provided.com'
+      null
     const name = existing?.name || this.getProfileName(profile)
     const avatar = existing?.avatar || this.getProfileAvatar(profile)
 
