@@ -15,6 +15,7 @@ import {
 } from './resume.schema'
 
 import type { Application } from '../../declarations'
+import { restrictResumeToCurrentUser } from '../../hooks/restrict-resume-to-current-user'
 import { ResumeService, getOptions } from './resume.class'
 import { resumePath, resumeMethods } from './resume.shared'
 
@@ -41,11 +42,15 @@ export const resume = (app: Application) => {
     },
     before: {
       all: [schemaHooks.validateQuery(resumeQueryValidator), schemaHooks.resolveQuery(resumeQueryResolver)],
-      find: [],
-      get: [],
+      find: [restrictResumeToCurrentUser],
+      get: [restrictResumeToCurrentUser],
       create: [schemaHooks.validateData(resumeDataValidator), schemaHooks.resolveData(resumeDataResolver)],
-      patch: [schemaHooks.validateData(resumePatchValidator), schemaHooks.resolveData(resumePatchResolver)],
-      remove: []
+      patch: [
+        restrictResumeToCurrentUser,
+        schemaHooks.validateData(resumePatchValidator),
+        schemaHooks.resolveData(resumePatchResolver)
+      ],
+      remove: [restrictResumeToCurrentUser]
     },
     after: {
       all: []
