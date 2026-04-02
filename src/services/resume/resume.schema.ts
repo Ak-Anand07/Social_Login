@@ -27,6 +27,8 @@ export const resumeSchema = Type.Object(
     title: Type.String(),
     template: Type.String(),
     status: Type.String(),
+    isPublic: Type.Optional(Type.Boolean()),
+    publicSlug: Type.Optional(Type.Union([Type.String(), Type.Null()])),
     text: Type.Optional(Type.String()),
     data: Type.Optional(resumePayloadSchema),
     createdAt: Type.Optional(Type.String()),
@@ -49,6 +51,8 @@ export const resumeDataSchema = Type.Object(
     title: Type.Optional(Type.String()),
     template: Type.Optional(Type.String()),
     status: Type.Optional(Type.String()),
+    isPublic: Type.Optional(Type.Boolean()),
+    publicSlug: Type.Optional(Type.Union([Type.String(), Type.Null()])),
     text: Type.Optional(Type.String()),
     data: Type.Optional(resumePayloadSchema)
   },
@@ -62,6 +66,8 @@ export const resumeDataResolver = resolve<ResumeData & Partial<Resume>, HookCont
   title: async (value) => value?.trim() || 'Untitled Resume',
   template: async (value) => value?.trim() || 'modern',
   status: async (value) => value?.trim() || 'draft',
+  isPublic: async (value) => value === true,
+  publicSlug: async (value) => (typeof value === 'string' ? value.trim() || null : value ?? null),
   updatedAt: async () => new Date().toISOString(),
   createdAt: async () => new Date().toISOString()
 })
@@ -76,7 +82,9 @@ export const resumePatchResolver = resolve<ResumePatch, HookContext<ResumeServic
   updatedAt: async () => new Date().toISOString(),
   title: async (value) => value?.trim() || value,
   template: async (value) => value?.trim() || value,
-  status: async (value) => value?.trim() || value
+  status: async (value) => value?.trim() || value,
+  publicSlug: async (value) => (typeof value === 'string' ? value.trim() || null : value),
+  isPublic: async (value) => (typeof value === 'boolean' ? value : value)
 })
 
 export const resumeQueryProperties = Type.Pick(resumeSchema, [
@@ -85,6 +93,8 @@ export const resumeQueryProperties = Type.Pick(resumeSchema, [
   'title',
   'template',
   'status',
+  'isPublic',
+  'publicSlug',
   'text',
   'createdAt',
   'updatedAt'

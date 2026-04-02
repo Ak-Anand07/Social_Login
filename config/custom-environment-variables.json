@@ -28,5 +28,8 @@
         "secret": "FACEBOOK_CLIENT_SECRET"
       }
     }
+  },
+  "groq": {
+    "apiKey": "GROQ_API_KEY"
   }
 }

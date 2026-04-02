@@ -8,7 +8,10 @@ export const configurationSchema = Type.Intersect([
   Type.Object({
     host: Type.String(),
     port: Type.Number(),
-    public: Type.String()
+    public: Type.String(),
+    groq: Type.Object({
+      apiKey: Type.Optional(Type.String())
+    })
   })
 ])
 

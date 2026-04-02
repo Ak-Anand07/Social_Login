@@ -48,16 +48,16 @@
     "oauth": {
       "redirect": "http://localhost:3000",
       "google": {
-        "key": "977502929212-a2b41orh3rbdkadp42c86gv7uaov9ii4.apps.googleusercontent.com",
-        "secret": "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",
+        "key": "your-google-client-id",
+        "secret": "your-google-client-secret",
         "scope": [
           "profile",
           "email"
         ]
       },
       "github": {
-        "key": "Ov23lievP226PCDPGfg9",
-        "secret": "e0eb914a5940ebcd66a79cd052e4677f81bb551a",
+        "key": "your-github-client-id",
+        "secret": "your-github-client-secret",
         "scope": [
           "user:email"
         ],
@@ -66,8 +66,8 @@
         }
       },
       "linkedin": {
-        "key": "862fzsis2kzc1n",
-        "secret": "WPL_AP1.ovs5CYYpzDU3UAz8.0WWHVw==",
+        "key": "your-linkedin-client-id",
+        "secret": "your-linkedin-client-secret",
         "scope": [
           "openid",
           "profile",
@@ -81,8 +81,8 @@
         ]
       },
       "twitter2": {
-        "key": "bVQyMkR1aktTaksyOEFzU0VoU1Q6MTpjaQ",
-        "secret": "wA7CX7mxKJfS-07FJh-vwl1HmSyTozQz9mjc-DO9tmppikYceH",
+        "key": "your-twitter-client-id",
+        "secret": "your-twitter-client-secret",
         "state": true,
         "pkce": true,
         "scope": [
@@ -93,8 +93,8 @@
         "redirect_uri": "http://127.0.0.1:3030/oauth/twitter2/callback"
       },
       "facebook": {
-        "key": "905062485927992",
-        "secret": "275a8ec5108c4e5da9d7c64c9459d63c",
+        "key": "your-facebook-client-id",
+        "secret": "your-facebook-client-secret",
         "scope": [
           "email",
           "public_profile"
@@ -103,5 +103,8 @@
         "profile_url": "https://graph.facebook.com/me?fields=id,name,email,picture"
       }
     }
+  },
+  "groq": {
+    "apiKey": "your-groq-api-key"
   }
 }
